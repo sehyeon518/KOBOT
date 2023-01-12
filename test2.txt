@@ -1,0 +1,9 @@
+test
+
+branch: origin junho
+
+git status
+git add .
+git commit -m "commit name"
+git log
+git push -> 

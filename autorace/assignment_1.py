@@ -26,17 +26,16 @@ while not rospy.is_shutdown():
     speed = 10
     xycar_msg.angle = angle
     xycar_msg.speed = speed
-    motor_pub.publish(xycar_msg)
 
     if ultrasonicData[1] < ultrasonicData[3]: # left front < right front
         xycar_msg.angle += 30*P
-        xycar_msg.speed = 60
-        motor_pub.publish(xycar_msg)
+        xycar_msg.speed = 50
     elif ultrasonicData[3] < ultrasonicData[1]: # right front < left front
         xycar_msg.angle -= 30*P
-        xycar_msg.speed = 60
-        motor_pub.publish(xycar_msg)
+        xycar_msg.speed = 50
     else:
         xycar_msg.angle = 0
         xycar_msg.speed = 120
-        motor_pub.publish(xycar_msg)
+    motor_pub.publish(xycar_msg)
+
+    print('speed:', xycar_msg.speed)
